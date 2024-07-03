@@ -12,12 +12,12 @@
  
 using namespace std;
  
-
+ 
  
 void solve() {
     int n,k;
     cin >> n >> k;
-
+ 
     int result = 1 + (n-1) *k;
     cout << result << endl;
     

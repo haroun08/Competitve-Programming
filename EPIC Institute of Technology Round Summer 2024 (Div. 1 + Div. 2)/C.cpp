@@ -12,16 +12,21 @@
  
 using namespace std;
  
-
+ 
  
 void solve() {
-    int n,k;
-    cin >> n >> k;
-
-    int result = 1 + (n-1) *k;
+    int n;
+    cin >> n;
+    
+    vector<int> h(n);
+    for (auto &i: h) cin >> i;
+    
+    int result = h[n - 1];
+    for (int i = n - 2; i >= 0; i--) {
+        result = max(result + 1, h[i]);
+    }
+ 
     cout << result << endl;
-    
-    
  
   }
 int main() {
