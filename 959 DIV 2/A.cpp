@@ -1,38 +1,39 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+#include <set>
+#include <algorithm>
+#include <queue>
+#include <unordered_map> 
  
-#define ll long long
 #define all(x) (x).begin(), (x).end()
 #define allr(x) (x).rbegin(), (x).rend()
 #define gsize(x) (int)((x).size())
-#define ckmax(a, b) ((a) = max((a), (b)))
  
 using namespace std;
  
-ll const mod = 1e9 + 7;
-
-
+ 
 void solve() {
-	int n,m;
+    int n,m;
     cin >> n >> m;
-    int result = 0;
-    vector<string> s(n);
-    for(auto &i : s) {
-        cin >> i;
+    vector<vector<int>> a(n,vector<int>(m));
+    for(auto &i : a){
+        for(auto &j : i) {
+            cin >> j;
+        }
     }
-    for (int i = 0; i < n; i++) {
-      if (m >= gsize(s[i])) {
-        m -= gsize(s[i]);
-        result++;
-      } else {
-        break;
-      }
+    if( n * m ==1) {
+        cout << -1 << endl;
     }
-    cout << result << endl;
-    
-}
-
- 
- 
+    else{
+        for(int i=0 ; i<n;i++){
+            for(int j=0;j<m;j++){
+                cout << a[(i + 1) % n][(j + 1) % m] << ' ';
+            }
+            cout << endl;
+        }
+    }
+  }
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
