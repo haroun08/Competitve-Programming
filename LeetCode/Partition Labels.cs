@@ -1,19 +1,21 @@
 public class Solution {
     public IList<int> PartitionLabels(string s) {
-        int[] lastOccurrence = new int[26];
+        Dictionary<char, int> lastOccurrence = new Dictionary<char, int>();
         for (int i = 0; i < s.Length; i++) {
-            lastOccurrence[s[i] - 'a'] = i;
+            char c = s[i];
+            lastOccurrence[c] = i; 
         }
         
         int partitionEnd = 0, partitionStart = 0;
-        List<int> result = new List<int>();
+        List<int> partitionSizes = new List<int>();
         for (int i = 0; i < s.Length; i++) {
-            partitionEnd = Math.Max(partitionEnd, lastOccurrence[s[i] - 'a']);
+            char currentChar = s[i];
+            partitionEnd = Math.Max(partitionEnd, lastOccurrence[currentChar]);
             if (i == partitionEnd) {
-                result.Add(i - partitionStart + 1);
+                partitionSizes.Add(i - partitionStart + 1);
                 partitionStart = i + 1;
             }
         }
-        return result;
+        return partitionSizes;
     }
 }
